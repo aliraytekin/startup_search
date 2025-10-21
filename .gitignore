@@ -1,14 +1,14 @@
-/backend/log/*
-/backend/tmp/*
-/backend/.bundle
-/backend/vendor/bundle
-/backend/storage/*
-/backend/node_modules
-/backend/.env
+/backend-rails/log/*
+/backend-rails/tmp/*
+/backend-rails/.bundle
+/backend-rails/vendor/bundle
+/backend-rails/storage/*
+/backend-rails/node_modules
+/backend-rails/.env
 
-/frontend/node_modules
-/frontend/build
-/frontend/.env
+/frontend-react/node_modules
+/frontend-react/build
+/frontend-react/.env
 
 .DS_Store
 .env

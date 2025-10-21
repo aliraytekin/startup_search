@@ -1,0 +1,14 @@
+/backend/log/*
+/backend/tmp/*
+/backend/.bundle
+/backend/vendor/bundle
+/backend/storage/*
+/backend/node_modules
+/backend/.env
+
+/frontend/node_modules
+/frontend/build
+/frontend/.env
+
+.DS_Store
+.env

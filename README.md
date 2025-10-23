@@ -35,6 +35,7 @@ The idea wasn’t just to “get something working” — it was to understand h
 <img width="1404" height="777" alt="image" src="https://github.com/user-attachments/assets/db763f2b-7421-4750-8168-3874ba0aafb8" />
 
 
+
 Each Startup has:
 
 - One Location (city, region, country),

@@ -49,17 +49,17 @@ At the start, I considered two main paths for implementing full-text search:
 
 **_Option 1: Elasticsearch / Searchkick_**
 
-✅ Excellent scalability for large datasets.
-✅ Advanced scoring and fuzzy matching.
-❌ Adds another external dependency.
-❌ Heavier setup (cluster, sync jobs, reindexing).
+- ✅ Excellent scalability for large datasets.
+- ✅ Advanced scoring and fuzzy matching.
+- ❌ Adds another external dependency.
+- ❌ Heavier setup (cluster, sync jobs, reindexing).
 
 _**Option 2: PostgreSQL pg_trgm + pg_search**_
 
-✅ Zero external dependencies — works within Rails + PostgreSQL.
-✅ Simple to implement and performant for <100k records.
-✅ Supports partial matches (ILIKE) and ranking.
-❌ Less powerful ranking and language tokenization than Elasticsearch.
+- ✅ Zero external dependencies — works within Rails + PostgreSQL.
+- ✅ Simple to implement and performant for <100k records.
+- ✅ Supports partial matches (ILIKE) and ranking.
+- ❌ Less powerful ranking and language tokenization than Elasticsearch.
 
 Since this project is focused on learning, iteration, and clean architecture, I chose pg_search — it gives 90% of what I need (fast and flexible queries) without operational overhead.
 

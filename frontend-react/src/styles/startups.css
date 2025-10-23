@@ -6,17 +6,8 @@
 }
 
 .startups-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
   gap: 0.75rem;
-}
-
-.startups-title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #141824;
+  text-align: center;
 }
 
 .filters { display: grid; gap: 0.75rem; }
@@ -74,7 +65,7 @@
 
 @media (max-width: 1200px) {
   .searchbar-input {
-    width: 95%;
+    width: 90%;
   }
 }
 

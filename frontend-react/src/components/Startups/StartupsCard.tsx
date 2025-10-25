@@ -17,9 +17,7 @@ export default function StartupsCard({ startup }: Props) {
 
   return(
     <div className="startup-card">
-      <header className="startup-card-header">
-        <h2>{startup.name}</h2>
-      </header>
+      <h2 className="startup-card-header">{startup.name}</h2>
 
       <div className="startup-card-row">
         <span className="chip chip-info">{formatValues(city)}</span>

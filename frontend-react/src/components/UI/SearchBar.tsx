@@ -46,92 +46,90 @@ export default function SearchBar({ value, onChange }: Props) {
   }, [debouncedQ])
 
   return(
-    <div className="filters">
-      <div className="filters-row">
-        <div className="search-bar">
-          <input
-            aria-label="Search startups"
-            className="searchbar-input"
-            type="text"
-            placeholder="Search startups"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") onChange({...value, q}) }}
-          />
-          {q && (
-            <button className="searchbar-clear" type="button" onClick={() => { setQ("") }} aria-label="Clear search">
-              ×
-            </button>
-          )}
-        </div>
+    <div className="filters-row">
+      <div className="search-bar">
+        <input
+          aria-label="Search startups"
+          className="searchbar-input"
+          type="text"
+          placeholder="Search startups"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") onChange({...value, q}) }}
+        />
+        {q && (
+          <button className="searchbar-clear" type="button" onClick={() => { setQ("") }} aria-label="Clear search">
+            ×
+          </button>
+        )}
+      </div>
 
-        <div className="filters-controls">
-          <select
-            className="select"
-            value={value.city ?? ""}
-            onChange={(e) => { onChange({...value, city: (e.target.value || '') as City || ''}) } }
-          >
-            <option value="">City</option>
-            {CITIES.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
-          </select>
+      <div className="filters-controls">
+        <select
+          className="select"
+          value={value.city ?? ""}
+          onChange={(e) => { onChange({...value, city: (e.target.value || '') as City || ''}) } }
+        >
+          <option value="">City</option>
+          {CITIES.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
+        </select>
 
-          <select
-            className="select"
-            value={value.region ?? ""}
-            onChange={(e) => { onChange({...value, region: (e.target.value || '') as Region || ''})}}
-          >
-            <option value="">Region</option>
-            {REGIONS.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
-          </select>
+        <select
+          className="select"
+          value={value.region ?? ""}
+          onChange={(e) => { onChange({...value, region: (e.target.value || '') as Region || ''})}}
+        >
+          <option value="">Region</option>
+          {REGIONS.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
+        </select>
 
-          <select
-            className="select"
-            value={value.country ?? ""}
-            onChange={(e) => { onChange({...value, country: (e.target.value || '') as Country || ''})}}
-          >
+        <select
+          className="select"
+          value={value.country ?? ""}
+          onChange={(e) => { onChange({...value, country: (e.target.value || '') as Country || ''})}}
+        >
 
-            <option value="">Country</option>
-            {COUNTRIES.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
-          </select>
-
-
-          <select
-            className="select"
-            value={value.app_state ?? ""}
-            onChange={(e) => { onChange({...value, app_state: (e.target.value || '') as AppState || ''}) }}
-          >
-            <option value="">Application Status</option>
-            {APP_STATES.map((s) => <option key={s} value={s}>{formatValues(s)}</option>)}
-          </select>
-
-          <select
-            className="select"
-            value={value.app_category ?? ""}
-            onChange={(e) => onChange({...value, app_category: (e.target.value || '') as Category || ''})}
-          >
-            <option value="">Category</option>
-            {CATEGORIES.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
-          </select>
+          <option value="">Country</option>
+          {COUNTRIES.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
+        </select>
 
 
-          <select
-            className="select"
-            value={value.contact_state ?? ""}
-            onChange={(e) => onChange({...value, contact_state: (e.target.value || '') as ContactState || ''})}
-          >
-            <option value="">Contact</option>
-            {CONTACT_STATES.map((s) => <option key={s} value={s}>{formatValues(s)}</option>)}
-          </select>
+        <select
+          className="select"
+          value={value.app_state ?? ""}
+          onChange={(e) => { onChange({...value, app_state: (e.target.value || '') as AppState || ''}) }}
+        >
+          <option value="">Application Status</option>
+          {APP_STATES.map((s) => <option key={s} value={s}>{formatValues(s)}</option>)}
+        </select>
 
-          <select
-            className="select"
-            value={value.email_status ?? ""}
-            onChange={(e) => onChange({...value, email_status: (e.target.value || '') as EmailStatus || ''})}
-          >
-            <option value="">Email</option>
-            {EMAIL_STATUSES.map((s) => <option key={s} value={s}>{formatValues(s)}</option>)}
-          </select>
-        </div>
+        <select
+          className="select"
+          value={value.app_category ?? ""}
+          onChange={(e) => onChange({...value, app_category: (e.target.value || '') as Category || ''})}
+        >
+          <option value="">Category</option>
+          {CATEGORIES.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
+        </select>
+
+
+        <select
+          className="select"
+          value={value.contact_state ?? ""}
+          onChange={(e) => onChange({...value, contact_state: (e.target.value || '') as ContactState || ''})}
+        >
+          <option value="">Contact</option>
+          {CONTACT_STATES.map((s) => <option key={s} value={s}>{formatValues(s)}</option>)}
+        </select>
+
+        <select
+          className="select"
+          value={value.email_status ?? ""}
+          onChange={(e) => onChange({...value, email_status: (e.target.value || '') as EmailStatus || ''})}
+        >
+          <option value="">Email</option>
+          {EMAIL_STATUSES.map((s) => <option key={s} value={s}>{formatValues(s)}</option>)}
+        </select>
       </div>
     </div>
   )

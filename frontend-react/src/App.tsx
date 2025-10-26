@@ -1,10 +1,10 @@
-import StartupsList from "./components/Startups/StartupsList"
+import StartupsTable from "./components/Startups/StartupsTable";
 import './App.css';
 
 function App() {
   return (
     <>
-      <StartupsList></StartupsList>
+      <StartupsTable></StartupsTable>
     </>
   );
 }

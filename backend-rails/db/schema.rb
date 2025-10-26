@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_21_101154) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_25_165615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_21_101154) do
     t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category"], name: "index_applications_on_category"
     t.index ["startup_id"], name: "index_applications_on_startup_id"
+    t.index ["state"], name: "index_applications_on_state"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -30,7 +32,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_21_101154) do
     t.string "email_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email_status"], name: "index_contacts_on_email_status"
     t.index ["startup_id"], name: "index_contacts_on_startup_id"
+    t.index ["state"], name: "index_contacts_on_state"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -40,6 +44,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_21_101154) do
     t.string "country", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_locations_on_city"
+    t.index ["country"], name: "index_locations_on_country"
+    t.index ["region"], name: "index_locations_on_region"
     t.index ["startup_id"], name: "index_locations_on_startup_id"
   end
 
@@ -48,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_21_101154) do
     t.string "rating", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rating"], name: "index_reviews_on_rating"
     t.index ["startup_id"], name: "index_reviews_on_startup_id"
   end
 
@@ -55,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_21_101154) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_startups_on_created_at"
+    t.index ["name"], name: "index_startups_on_name"
   end
 
   add_foreign_key "applications", "startups"

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { fetchStartups } from "../api/startups";
-import { Filters, Startup } from "../types/startup";
+import { Filters, PageMeta, Startup } from "../types/startup";
 
 export function useStartups(filters: Filters = {}) {
   const [startups, setStartups] = useState<Startup[]>([]);
+  const [meta, setMeta] = useState<PageMeta>({ page: filters.page || 1, per: filters.per || 25, total: 0, total_pages: 0 });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null)
 
@@ -14,8 +15,8 @@ export function useStartups(filters: Filters = {}) {
       try {
         setError(null);
         setLoading(true);
-        const data = await fetchStartups(filters, controller.signal);
-        setStartups(data ?? []);
+        const { data, meta } = await fetchStartups(filters, controller.signal);
+        setStartups(data ?? []); setMeta(meta);
       } catch (err: unknown) {
         if ((err as any)?.name !== "AbortError") {
           setError(err instanceof Error ? err.message : "Failed to fetch startups");
@@ -30,5 +31,5 @@ export function useStartups(filters: Filters = {}) {
     return () => controller.abort();
   }, [filters]);
 
-  return { startups, loading, error };
+  return { meta, startups, loading, error };
 }

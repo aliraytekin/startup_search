@@ -11,20 +11,25 @@ class Api::V1::StartupsController < ApplicationController
     .yield_self { |rel| params[:contact_state].present? ? rel.with_contact_state(params[:contact_state]) : rel }
     .yield_self { |rel| params[:email_status].present? ? rel.with_contact_email_status(params[:email_status]) : rel }
     .yield_self { |rel| params[:rating].present? ? rel.with_rating(params[:rating]) : rel }
+    .order(created_at: :desc, id: :desc)
 
+    total = startups.except(:offset, :limit, :order).count
     page = params.fetch(:page, 1).to_i
-    per = [params.fetch(:per, 25), 100].min
+    per = params.fetch(:per, 25).to_i.clamp(1, 100)
     startups = startups.offset((page - 1) * per).limit(per)
 
-    render json: startups.as_json(
-      include: {
-        location: { only: [:city, :region, :country] },
-        application: { only: [:state, :category] },
-        contact: { only: [:state, :email_status] },
-        review: { only: [:rating] }
-      },
-      only: [:id, :name]
-    )
+    render json: {
+      data: startups.as_json(
+        include: {
+          location: { only: [:city, :region, :country] },
+          application: { only: [:state, :category] },
+          contact: { only: [:state, :email_status] },
+          review: { only: [:rating] }
+        },
+        only: [:id, :name, :created_at],
+      ),
+      meta: { page:, per:, total:, total_pages: (total.to_f / per).ceil }
+  }
   end
 
   def create

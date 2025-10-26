@@ -118,4 +118,12 @@ export interface Filters {
   app_category?: Category | '';
   contact_state?: ContactState | '';
   email_status?: EmailStatus | '';
+  page?: number; per?: number;
+}
+
+export interface PageMeta {
+  page: number;
+  per: number;
+  total: number;
+  total_pages: number;
 }

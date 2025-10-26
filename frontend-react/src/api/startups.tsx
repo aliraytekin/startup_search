@@ -1,11 +1,11 @@
-import { Startup, StartupCreateInput, Filters } from "../types/startup";
+import { Startup, StartupCreateInput, Filters, PageMeta } from "../types/startup";
 
 const API_URL = "http://localhost:4000/api/v1";
 
 export async function fetchStartups(
   filters: Filters = {},
   signal?: AbortSignal
-): Promise<Startup[]> {
+): Promise<{data: Startup[], meta: PageMeta}> {
   const url = new URL(`${API_URL}/startups`);
   Object.entries(filters).forEach(([k, v]) => {
     if (v !== "" && v !== null && v !== undefined) {

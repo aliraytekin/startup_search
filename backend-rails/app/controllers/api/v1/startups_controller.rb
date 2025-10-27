@@ -15,7 +15,7 @@ class Api::V1::StartupsController < ApplicationController
 
     total = startups.except(:offset, :limit, :order).count
     page = params.fetch(:page, 1).to_i
-    per = params.fetch(:per, 25).to_i.clamp(1, 100)
+    per = params.fetch(:per, 30).to_i.clamp(1, 100)
     startups = startups.offset((page - 1) * per).limit(per)
 
     render json: {

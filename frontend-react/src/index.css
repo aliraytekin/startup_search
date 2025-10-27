@@ -10,3 +10,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --bg: #f9fafb;
+  --text: #111827;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+
+  --brand: #3b82f6;
+
+  --sidebar-w: 260px;
+  --sidebar-w-mini: 40px;
+}

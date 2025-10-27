@@ -34,15 +34,20 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
+tbody tr {
+  text-align: center;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+}
+
 tbody td {
   padding: 12px;
   border-bottom: 1px solid #f2f4f7;
   font: 400 14px/1.4 Inter, system-ui; color: #111827;
 }
 
-tbody tr:hover {
-  background: #f9fafb;
-}
 
 .cell-strong {
   font-weight: 600;

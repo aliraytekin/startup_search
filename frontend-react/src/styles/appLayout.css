@@ -1,0 +1,46 @@
+.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 0 1fr;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.app-content {
+  padding: 16px;
+}
+
+.icon-btn {
+  display: none !important;
+  height: 36px;
+  font-size: large;
+  min-width: 36px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.icon-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--brand);
+  border-color: var(--brand);
+}
+
+@media (max-width: 1023px) {
+  .app {
+    grid-template-columns: 0 1fr;
+  }
+
+  .app-icon {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1000;
+  }
+
+  .icon-btn {
+    display: contents !important;
+  }
+}

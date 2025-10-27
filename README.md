@@ -65,15 +65,22 @@ Since this project is focused on learning, iteration, and clean architecture, I 
 
 # 🎨 UI & Design Process
 
-My first version was purely functional — then I rebuilt the UI to feel more like a professional dashboard, with:
+My first version was purely functional with:
 
 - A glassy filter bar,
-- Smooth hover transitions and consistent elevation,
+- Smooth hover transitions for startup cards,
 - Clean color palettes for badges (info, muted),
 
 I learned that design consistency (spacing and hover feedback) matters as much as logic — it communicates quality.
 
-## Roadmap:
+However, along the way I decided to challenge myself by doing an entire SaaS dashboard like Monday's design, therefore the design will: 
 
+- Have a sidebar on the left to switch pages
+- The use of a table instead of cards to display startups information
+- The feel of a SaaS dashboard 
+
+## Roadmap (ordered by priority):
+
+- Finalize the UI design for the dashboard 
 - Create and manage startups (with associated location, application, and contact data)
 - Testing	RSpec (Rails)	Model specs for search and scopes (planned extension)

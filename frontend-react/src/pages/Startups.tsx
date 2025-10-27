@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { City, Region, Country, AppState, Category, ContactState, EmailStatus, Filters } from "../../types/startup";
-import { useStartups } from "../../hooks/useStartups"
-import "../../styles/startups.css"
-import { formatValues } from "../../utils/formatters";
+import { City, Region, Country, AppState, Category, ContactState, EmailStatus, Filters } from "../types/startup";
+import { useStartups } from "../hooks/useStartups"
+import "../styles/startups.css"
+import { formatValues } from "../utils/formatters";
 
-const DEFAULT: Filters = { q: "", page: 1, per: 25 }
+const DEFAULT: Filters = { q: "", page: 1, per: 30 }
 
 const CITIES: City[] =
   [ "no_city_set", "london", "new_york", 'liverpool',

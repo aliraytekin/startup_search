@@ -4,7 +4,7 @@ import { Filters, PageMeta, Startup } from "../types/startup";
 
 export function useStartups(filters: Filters = {}) {
   const [startups, setStartups] = useState<Startup[]>([]);
-  const [meta, setMeta] = useState<PageMeta>({ page: filters.page || 1, per: filters.per || 25, total: 0, total_pages: 0 });
+  const [meta, setMeta] = useState<PageMeta>({ page: filters.page || 1, per: filters.per || 30, total: 0, total_pages: 0 });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null)
 

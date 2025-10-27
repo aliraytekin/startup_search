@@ -1,10 +1,13 @@
-import StartupsTable from "./components/Startups/StartupsTable";
+import StartupsTable from "./pages/Startups";
 import './App.css';
+import AppLayout from "./components/layout/AppLayout";
 
 function App() {
   return (
     <>
-      <StartupsTable></StartupsTable>
+      <AppLayout>
+        <StartupsTable />
+      </AppLayout>
     </>
   );
 }

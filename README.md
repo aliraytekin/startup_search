@@ -77,10 +77,19 @@ However, along the way I decided to challenge myself by doing an entire SaaS das
 
 - Have a sidebar on the left to switch pages
 - The use of a table instead of cards to display startups information
-- The feel of a SaaS dashboard 
+- The feel of a SaaS dashboard
+
+# Coding Diary
+
+## 28/10/2025:
+At one point, the table filters seemed to have a mind of their own: instead of showing hundreds of startups, only a few appeared. I double-checked everything: pagination, count, even `startups.count` in Rails always said 30 per page, yet the data on screen was far fewer.
+
+Curious (and also mildly panicking), I peeked into the SQL logs and found the culprit: the query used plain joins instead of left_outer_joins. That tiny difference meant ActiveRecord was excluding startups without related records, silently cutting the dataset.
+
+One switch later from joins → left_outer_joins — and suddenly the results came back to life. Filters working perfectly, and a valuable reminder: SQL joins are sneaky little things.
 
 ## Roadmap (ordered by priority):
 
-- Finalize the UI design for the dashboard 
+- Finalize the UI design for the dashboard ✅
 - Create and manage startups (with associated location, application, and contact data)
 - Testing	RSpec (Rails)	Model specs for search and scopes (planned extension)

@@ -1,19 +1,18 @@
 import { useState } from "react";
-import { City, Region, Country, AppState, Category, ContactState, EmailStatus, Filters } from "../types/startup";
+import { City, Country, AppState, Category, ContactState, EmailStatus, Filters } from "../types/startup";
+import { APP_STATE_VARIANT, CONTACT_STATE_VARIANT, EMAIL_STATUS_VARIANT } from "../types/variants";
+import Chip from "../components/ui/Chip";
 import { useStartups } from "../hooks/useStartups"
-import "../styles/startups.css"
 import { formatValues } from "../utils/formatters";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCity, faFlag } from "@fortawesome/free-solid-svg-icons";
+import "../styles/startups.css"
 
 const DEFAULT: Filters = { q: "", page: 1, per: 30 }
 
 const CITIES: City[] =
   [ "no_city_set", "london", "new_york", 'liverpool',
   "tel_aviv", "genova", "birmingham", "amsterdam", "dublin" ]
-
-const REGIONS: Region[] =
-  ["no_country", "northern_europe", "western_europe", "southern_europe",
-  "southern_asia", "western_asia", "australia_and_new_zealand",
-  "south_eastern_asia", "south_america"]
 
 const COUNTRIES: Country[] =
   ["no_country", "united_kingdom", "united_states", "india",
@@ -48,7 +47,6 @@ export default function StartList() {
             <tr className="thead-top">
               <th>Name</th>
               <th>City</th>
-              <th>Region</th>
               <th>Country</th>
               <th>Application State</th>
               <th>Application Category</th>
@@ -68,11 +66,6 @@ export default function StartList() {
               <th><select className="select" value={filters.city ?? ""} onChange={e => setFilters({...filters, city: (e.target.value || "") as City || ''}) }>
                 <option value="">City</option>
                 {CITIES.map((c) => <option key={c} value={c}>{formatValues(c)}</option>)}
-                </select>
-              </th>
-              <th><select className="select" value={filters.region ?? ""} onChange={e => setFilters({...filters, region: (e.target.value || "") as Region || ''}) }>
-                <option value="">Region</option>
-                {REGIONS.map((r) => <option key={r} value={r}>{formatValues(r)}</option>)}
                 </select>
               </th>
               <th><select className="select" value={filters.country ?? ""} onChange={e => setFilters({...filters, country: (e.target.value || "") as Country || ''}) }>
@@ -110,13 +103,44 @@ export default function StartList() {
             {startups.map((startup) => (
               <tr key={startup.id}>
                 <td className="cell-strong">{startup.name}</td>
-                <td>{formatValues(startup.location?.city ?? "no_city_set")}</td>
-                <td>{formatValues(startup.location?.region ?? "no_country")}</td>
-                <td>{formatValues(startup.location?.country ?? "no_country")}</td>
-                <td>{formatValues(startup.application?.state ?? "not_suitable")}</td>
-                <td>{formatValues(startup.application?.category ?? "no_category")}</td>
-                <td>{formatValues(startup.contact?.state ?? "not_contacted")}</td>
-                <td>{formatValues(startup.contact?.email_status ?? "delivered")}</td>
+                <td>
+                  <div className="chip-container">
+                    <div className="chip chip-city">
+                      <p><FontAwesomeIcon icon={faCity} /> {formatValues(startup.location?.city ?? "no_city_set")}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div className="chip-container">
+                    <div className="chip chip-country">
+                      <p><FontAwesomeIcon icon={faFlag} /> {formatValues(startup.location?.country ?? "no_country")}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div className="chip-container">
+                    <Chip variant={APP_STATE_VARIANT[startup.application?.state ?? "not_suitable"]}>
+                      {formatValues(startup.application?.state ?? "not_suitable")}
+                    </Chip>
+                  </div>
+                </td>
+                <td className="cell-strong">
+                      {formatValues(startup.application?.category ?? "no_category")}
+                </td>
+                <td>
+                  <div className="chip-container">
+                    <Chip variant={CONTACT_STATE_VARIANT[startup.contact?.state ?? "not_contacted"]}>
+                      {formatValues(startup.contact?.state ?? "not_contacted")}
+                    </Chip>
+                  </div>
+                </td>
+                <td>
+                  <div className="chip-container">
+                    <Chip variant={EMAIL_STATUS_VARIANT[startup.contact?.email_status ?? "delivered"]}>
+                      {formatValues(startup.contact?.email_status ?? "delivered")}
+                    </Chip>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

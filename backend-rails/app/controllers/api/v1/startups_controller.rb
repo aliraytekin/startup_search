@@ -2,6 +2,7 @@ class Api::V1::StartupsController < ApplicationController
   def index
     startups = Startup
     .includes(:location, :application, :contact, :review)
+    .left_outer_joins(:location, :application, :contact, :review)
     .yield_self { |rel| params[:q].present? ? rel.search_text(params[:q]) : rel }
     .yield_self { |rel| params[:city].present? ? rel.in_city(params[:city]) : rel }
     .yield_self { |rel| params[:region].present? ? rel.in_region(params[:region]) : rel }
@@ -11,7 +12,11 @@ class Api::V1::StartupsController < ApplicationController
     .yield_self { |rel| params[:contact_state].present? ? rel.with_contact_state(params[:contact_state]) : rel }
     .yield_self { |rel| params[:email_status].present? ? rel.with_contact_email_status(params[:email_status]) : rel }
     .yield_self { |rel| params[:rating].present? ? rel.with_rating(params[:rating]) : rel }
+    .left_outer_joins(:location, :application, :contact, :review)
+    .distinct
     .order(created_at: :desc, id: :desc)
+
+    Rails.logger.debug "Startups: #{startups.to_sql}"
 
     total = startups.except(:offset, :limit, :order).count
     page = params.fetch(:page, 1).to_i

@@ -12,24 +12,17 @@
   z-index: 3;
 }
 
-.drawer-collapsed {
-  width: var(--sidebar-w-mini);
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--brand-weak);
-  color: var(--brand);
-  font-weight: 700;
-}
-
-.brand-name {
-  font: 700 16px/1 Inter;
-  color: var(--text);
+.logo {
+  width: 160px;
+  height: 80px;
+  object-fit: contain;
+  background-position: center;
 }
 
 .drawer-nav {
@@ -48,12 +41,12 @@
   border: 1px solid transparent;
   background: transparent;
   color: var(--text);
-  font: 500 14px/1 Inter; text-align: left;
+  font: 500 14px/1 Inter;
+  text-align: left;
   cursor: pointer;
 }
 
 .nav-btn:hover { background: #f3f4f6; }
-
 .nav-icon { width: 20px; text-align: center; }
 
 .nav-label {

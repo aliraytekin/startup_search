@@ -24,15 +24,15 @@ class Startup < ApplicationRecord
       trigram: {}
     }
 
-  scope :in_country, ->(country) { joins(:location).where(locations: { country: country }).distinct }
-  scope :in_region, ->(region) { joins(:location).where(locations: { region:  region }).distinct }
-  scope :in_city, ->(city) { joins(:location).where(locations: { city: city }).distinct }
+  scope :in_country, ->(country) { where(locations: { country: country }).distinct }
+  scope :in_region, ->(region) { where(locations: { region:  region }).distinct }
+  scope :in_city, ->(city) { where(locations: { city: city }).distinct }
 
-  scope :with_app_state, ->(s) { joins(:application).where(applications: { state: s }).distinct }
-  scope :with_app_category, ->(c) { joins(:application).where(applications: { category: c }).distinct }
+  scope :with_app_state, ->(s) { where(applications: { state: s }).distinct }
+  scope :with_app_category, ->(c) { where(applications: { category: c }).distinct }
 
-  scope :with_contact_state, ->(s) { joins(:contact).where(contacts: { state: s }).distinct }
-  scope :with_contact_email_status, ->(s) { joins(:contact).where(contacts: { email_status: s }).distinct }
+  scope :with_contact_state, ->(s) { where(contacts: { state: s }).distinct }
+  scope :with_contact_email_status, ->(s) { where(contacts: { email_status: s }).distinct }
 
-  scope :with_ratings, ->(r) { joins(:review).where(reviews: { rating: r }).distinct }
+  scope :with_rating, ->(r) { where(reviews: { rating: r }).distinct }
 end

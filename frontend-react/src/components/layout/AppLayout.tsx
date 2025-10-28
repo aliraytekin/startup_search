@@ -11,7 +11,6 @@ export default function AppLayout({ children }: { children: React.ReactNode}) {
         <Drawer
           open={open}
           onClose={() => setOpen(false)}
-          onToggleOpen={() => setOpen(o => !o)}
         />
       </div>
       <div className="app-icon">

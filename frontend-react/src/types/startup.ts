@@ -70,11 +70,11 @@ export type EmailStatus =
   | 'clicked';
 
 
-export interface Location {
-  city: City;
-  region: Region;
-  country: Country;
-}
+  export interface Location {
+    city: City;
+    region: Region;
+    country: Country;
+  }
 
 export interface Application {
   state: AppState;
@@ -99,15 +99,6 @@ export interface Startup {
   reviews: Review;
 }
 
-export interface StartupCreateInput {
-  startup: {
-    name: string;
-    location_attributes: Location;
-    application_attributes: Application;
-    contact_attributes: Contact;
-    review_attributes: Review;
-  }
-}
 
 export interface Filters {
   q?: string;
@@ -126,4 +117,15 @@ export interface PageMeta {
   per: number;
   total: number;
   total_pages: number;
+}
+
+
+export interface StartupCreateInput {
+  startup: {
+    name: string;
+    location_attributes: Location;
+    application_attributes: Application;
+    contact_attributes: Contact;
+    review_attributes: Review;
+  }
 }

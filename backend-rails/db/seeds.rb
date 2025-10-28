@@ -8,7 +8,7 @@ Application.delete_all
 Location.delete_all
 Startup.delete_all
 
-TARGET = 45
+TARGET = 1000
 
 ApplicationRecord.transaction do
   TARGET.times do |i|

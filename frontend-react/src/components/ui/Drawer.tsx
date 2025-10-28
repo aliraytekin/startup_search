@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
+import logoUrl from "../../assets/logo.png";
 import "../../styles/drawer.css"
 
 interface Props {
   open: boolean;
   onClose: () => void;
-  onToggleOpen?: () => void;
 }
 
 const NAV = [
@@ -13,7 +13,7 @@ const NAV = [
   { key: "startups",  label: "Startups",  icon: "🚀", active: true }, // example active
 ];
 
-export default function Drawer({ open, onClose, onToggleOpen }: Props) {
+export default function Drawer({ open, onClose }: Props) {
   const panelref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,6 +33,13 @@ export default function Drawer({ open, onClose, onToggleOpen }: Props) {
         ref={panelref}
         className={`drawer ${open ? "drawer-open" : ""}`}
         aria-label="Main navigation">
+
+        <div className="logo-container">
+          <img
+            src={logoUrl}
+            alt="Company Logo"
+            className="logo" />
+        </div>
 
 
         <nav className="drawer-nav">

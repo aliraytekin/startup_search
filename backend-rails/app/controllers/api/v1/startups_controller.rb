@@ -12,7 +12,7 @@ class Api::V1::StartupsController < ApplicationController
     .yield_self { |rel| params[:contact_state].present? ? rel.with_contact_state(params[:contact_state]) : rel }
     .yield_self { |rel| params[:email_status].present? ? rel.with_contact_email_status(params[:email_status]) : rel }
     .yield_self { |rel| params[:rating].present? ? rel.with_rating(params[:rating]) : rel }
-    .left_outer_joins(:location, :application, :contact, :review)
+    .reorder(nil)
     .distinct
     .order(created_at: :desc, id: :desc)
 
@@ -52,8 +52,8 @@ class Api::V1::StartupsController < ApplicationController
     params.require(:startup).permit(
       :name,
       location_attributes: [:country, :region, :city ],
-      application_attributes: [:id, :status, :category, :_destroy],
-      contact_attributes: [:id, :status, :email_status, :_destroy],
+      application_attributes: [:id, :state, :category, :_destroy],
+      contact_attributes: [:id, :state, :email_status, :_destroy],
       review_attributes: [:id, :rating, :_destroy])
   end
 end

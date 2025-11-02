@@ -1,0 +1,43 @@
+.toolbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-header {
+  font: 600 1.5rem/1.4 Inter, system-ui;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.4rem;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+.toolbar-actions input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font: 400 1rem/1.4 Inter, system-ui;
+}
+
+.toolbar-actions button {
+  padding: 8px 16px;
+  background-color: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font: 500 1rem/1.4 Inter, system-ui;
+  cursor: pointer;
+}

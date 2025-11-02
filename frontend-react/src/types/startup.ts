@@ -69,6 +69,38 @@ export type EmailStatus =
   | 'opened'
   | 'clicked';
 
+export const CITIES: City[] =
+  [ "no_city_set", "london", "new_york", 'liverpool',
+  "tel_aviv", "genova", "birmingham", "amsterdam", "dublin" ]
+
+export const REGIONS: Region[] =
+  [ "no_country", "northern_europe", "western_europe", "northern_europe",
+    "southern_europe", "southern_asia", "western_asia", "australia_and_new_zealand",
+    "south_eastern_asia", "south_america" ]
+
+export const COUNTRIES: Country[] =
+  ["no_country", "united_kingdom", "united_states", "india",
+    "netherlands", "france", "canada", "israel", "italy", "germany"]
+
+
+export const APP_STATES: AppState[] = [
+  'added_to_programme','not_suitable','invited_to_apply','applying',
+  'application_finalised','shortlisted','not_shortlisted',
+  'invited_to_pitch_day','not_invited_to_pitch_day','successful',
+  'not_successful','not_interested','interested','referred'
+];
+
+export const CATEGORIES: Category[] = [
+  'optimisation','providing_an_experience',
+  'attention_on_the_consumer','ui_ux','no_category'
+];
+
+export const CONTACT_STATES: ContactState[] = [
+  'not_contacted','contacted','call_scheduled','responded','follow_up'
+];
+
+export const EMAIL_STATUSES: EmailStatus[] = ['delivered','bounced','opened','clicked'];
+
 
   export interface Location {
     city: City;
@@ -121,11 +153,11 @@ export interface PageMeta {
 
 
 export interface StartupCreateInput {
-  startup: {
-    name: string;
-    location_attributes: Location;
-    application_attributes: Application;
-    contact_attributes: Contact;
-    review_attributes: Review;
+  name: string;
+  location_attributes: Location;
+  application_attributes: Application;
+  contact_attributes: Contact;
+  review_attributes: {
+    rating: number;
   }
 }

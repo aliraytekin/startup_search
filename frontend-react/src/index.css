@@ -15,11 +15,21 @@ code {
   --bg: #f9fafb;
   --text: #111827;
   --surface: #ffffff;
-  --border: #e5e7eb;
+  --border: #d6d9de;
 
   --brand: #3b82f6;
   --brand-weak: #e8f1ff;
 
   --sidebar-w: 260px;
   --sidebar-w-mini: 40px;
+}
+
+.button-primary {
+  background: var(--brand);
+  color: white;
+}
+
+.button-error {
+  background: #FF2929;
+  color: white;
 }

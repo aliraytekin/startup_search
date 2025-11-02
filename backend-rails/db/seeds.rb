@@ -34,12 +34,10 @@ ApplicationRecord.transaction do
       email_status: Contact::EMAIL_STATUS.sample
     )
 
-    rand(2..34).times do
-      Review.create!(
-        startup: startup,
-        rating: rand(1..5)
-      )
-    end
+    Review.create!(
+      startup: startup,
+      rating: rand(1..5)
+    )
 
     puts "  • Created #{i + 1}/#{TARGET}: #{startup.name}"
   end

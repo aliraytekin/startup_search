@@ -21,18 +21,18 @@ class Startup < ApplicationRecord
     },
     using: {
       tsearch: { prefix: true },
-      trigram: {}
+      trigram: { threshold: 0.1 }
     }
 
-  scope :in_country, ->(country) { where(locations: { country: country }).distinct }
-  scope :in_region, ->(region) { where(locations: { region:  region }).distinct }
-  scope :in_city, ->(city) { where(locations: { city: city }).distinct }
+  scope :in_country, ->(country) { where(locations: { country: country }) }
+  scope :in_region, ->(region) { where(locations: { region:  region }) }
+  scope :in_city, ->(city) { where(locations: { city: city }) }
 
-  scope :with_app_state, ->(s) { where(applications: { state: s }).distinct }
-  scope :with_app_category, ->(c) { where(applications: { category: c }).distinct }
+  scope :with_app_state, ->(s) { where(applications: { state: s }) }
+  scope :with_app_category, ->(c) { where(applications: { category: c }) }
 
-  scope :with_contact_state, ->(s) { where(contacts: { state: s }).distinct }
-  scope :with_contact_email_status, ->(s) { where(contacts: { email_status: s }).distinct }
+  scope :with_contact_state, ->(s) { where(contacts: { state: s }) }
+  scope :with_contact_email_status, ->(s) { where(contacts: { email_status: s }) }
 
-  scope :with_rating, ->(r) { where(reviews: { rating: r }).distinct }
+  scope :with_rating, ->(r) { where(reviews: { rating: r }) }
 end

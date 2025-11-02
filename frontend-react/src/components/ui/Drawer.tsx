@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import logoUrl from "../../assets/logo.png";
-import "../../styles/drawer.css"
+import "../../styles/Drawer.css"
 
 interface Props {
   open: boolean;

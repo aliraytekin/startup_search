@@ -1,24 +1,17 @@
-import { City, Country, AppState, Category, ContactState, EmailStatus, Filters,
+import { City, Country, AppState, Category, ContactState, EmailStatus,
   CITIES, COUNTRIES, APP_STATES, CATEGORIES, CONTACT_STATES, EMAIL_STATUSES,
-  Startup
 } from "../../types/startup";
 import { APP_STATE_VARIANT, CONTACT_STATE_VARIANT, EMAIL_STATUS_VARIANT } from "../../types/variants";
 import Chip from "../ui/Chip";
-import { useStartups } from "../../hooks/useStartups";
+import { useStartupsContext } from "../../contexts/StartupsContext";
 import { formatValues } from "../../utils/formatters";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCity, faFlag } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/Startups.css"
 
-interface Props {
-  filters: Filters;
-  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
-  startups: Startup[];
-  loading: boolean;
-  error: string | null;
-}
+export default function StartupsTable() {
+  const { filters, setFilters, startups, loading, error } = useStartupsContext();
 
-export default function StartupsTable({ filters, setFilters, startups, loading, error }: Props) {
   return(
     <div className="table-wrap">
         <table className="table">
@@ -70,7 +63,7 @@ export default function StartupsTable({ filters, setFilters, startups, loading, 
           <tbody>
             {error && <tr><td colSpan={8} className="td-center">Error loading startups</td></tr>}
             {loading && <tr><td colSpan={8} className="td-center">Loading...</td></tr>}
-            {!loading && startups.length === 0 && <tr><td colSpan={8} className="td-center">No startups found</td></tr>}
+            {!loading && !error && startups.length === 0 && <tr><td colSpan={8} className="td-center">No startups found</td></tr>}
             {startups.map((startup) => (
               <tr key={startup.id}>
                 <td className="cell-strong">{startup.name}</td>

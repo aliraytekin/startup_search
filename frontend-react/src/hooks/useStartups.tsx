@@ -2,7 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchStartups } from "../api/startups";
 import { Filters, PageMeta, Startup } from "../types/startup";
 
-export function useStartups(filters: Filters = {}) {
+const DEFAULT_FILTERS: Filters = {};
+
+export function useStartups(filters: Filters = DEFAULT_FILTERS) {
   const [startups, setStartups] = useState<Startup[]>([]);
   const [meta, setMeta] = useState<PageMeta>({ page: filters.page || 1, per: filters.per || 30, total: 0, total_pages: 0 });
   const [loading, setLoading] = useState(false);

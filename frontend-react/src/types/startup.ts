@@ -10,8 +10,9 @@ export type City =
   | "dublin";
 
 export type Region =
-  | "no_country"
+  | "no_region_set"
   | "northern_europe"
+  | "northern_america"
   | "western_europe"
   | "northern_europe"
   | "southern_europe"
@@ -22,7 +23,7 @@ export type Region =
   | "south_america";
 
 export type Country =
-  | "no_country"
+  | "no_country_set"
   | "united_kingdom"
   | "united_states"
   | "india"
@@ -74,12 +75,12 @@ export const CITIES: City[] =
   "tel_aviv", "genova", "birmingham", "amsterdam", "dublin" ]
 
 export const REGIONS: Region[] =
-  [ "no_country", "northern_europe", "western_europe", "northern_europe",
+  [ "no_region_set", "northern_europe", "northern_america", "western_europe", "northern_europe",
     "southern_europe", "southern_asia", "western_asia", "australia_and_new_zealand",
     "south_eastern_asia", "south_america" ]
 
 export const COUNTRIES: Country[] =
-  ["no_country", "united_kingdom", "united_states", "india",
+  ["no_country_set", "united_kingdom", "united_states", "india",
     "netherlands", "france", "canada", "israel", "italy", "germany"]
 
 
@@ -102,11 +103,13 @@ export const CONTACT_STATES: ContactState[] = [
 export const EMAIL_STATUSES: EmailStatus[] = ['delivered','bounced','opened','clicked'];
 
 
-  export interface Location {
-    city: City;
-    region: Region;
-    country: Country;
-  }
+export interface Location {
+  city: City;
+  region: Region;
+  country: Country;
+  latitude?: number;
+  longitude?: number;
+}
 
 export interface Application {
   state: AppState;

@@ -2,14 +2,11 @@ import React from "react";
 import {useStartups} from "../../hooks/useStartups"
 import "../../styles/Startups.css"
 import { Filters, PageMeta } from "../../types/startup"
+import { useStartupsContext } from "../../contexts/StartupsContext";
 
-interface Props {
-  filters: Filters;
-  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
-  meta: PageMeta;
-}
+export default function Pagination() {
+  const { filters, setFilters, meta } = useStartupsContext();
 
-export default function Pagination({ filters, setFilters, meta }: Props) {
   return(
     <nav className="pagination">
       <button disabled={(filters.page ?? 1) <= 1} onClick={() => setFilters(prev => ({...prev, page: (prev.page ?? 1) - 1}))}>

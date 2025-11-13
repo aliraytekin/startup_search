@@ -6,15 +6,17 @@ import { createStartups } from "../../api/startups";
 import { StartupCreateInput } from "../../types/startup";
 import { formatValues } from "../../utils/formatters";
 import "../../styles/CreateStartupsModal.css"
+import { useStartupsContext } from "../../contexts/StartupsContext";
 
-export default function CreateStartupsModal({ open, onClose, reload }: { open: boolean; onClose: () => void, reload: () => void }) {
+export default function CreateStartupsModal() {
+  const { open, onClose, reload } =  useStartupsContext();
 
   const [form, setForm] = useState<StartupCreateInput>({
     name: "",
     location_attributes: {
       city: "no_city_set",
-      region: "no_country",
-      country: "no_country"
+      region: "no_region_set",
+      country: "no_country_set"
     },
     application_attributes: {
       state: "added_to_programme",

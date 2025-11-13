@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import logoUrl from "../../assets/logo.png";
+import { NavLink } from "react-router-dom";
 import "../../styles/Drawer.css"
 
 interface Props {
@@ -8,9 +9,9 @@ interface Props {
 }
 
 const NAV = [
-  { key: "dashboard", label: "Dashboard", icon: "🏠" },
-  { key: "map", label: "Map", icon: "🗺️" },
-  { key: "startups",  label: "Startups",  icon: "🚀", active: true }, // example active
+  { link: "dashboard", label: "Dashboard", icon: "🏠" },
+  { link: "map", label: "Map", icon: "🗺️" },
+  { link: "startups",  label: "Startups",  icon: "🚀" }
 ];
 
 export default function Drawer({ open, onClose }: Props) {
@@ -43,18 +44,17 @@ export default function Drawer({ open, onClose }: Props) {
 
 
         <nav className="drawer-nav">
-            {NAV.map((item) => (
-              <button
-                key={item.key}
-                className={`nav-btn ${item.active ? "is-active" : ""}`}
-                // navigation when pages created, onClick={() => ... navigate ...}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </button>
-            ))}
-          </nav>
-        </aside>
+          {NAV.map((item) => (
+            <NavLink key={item.link} to={item.link}
+              className={({isActive}) =>
+                `nav-btn ${ isActive ? "is-active" : ""}`}
+            >
+              <span className="nav-icon">{item.icon}</span>
+              <span className="nav-label">{item.label}</span>
+            </NavLink>
+          ))}
+        </nav>
+      </aside>
     </>
   )
 }

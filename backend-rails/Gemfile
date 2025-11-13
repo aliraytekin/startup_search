@@ -54,3 +54,4 @@ end
 gem "ostruct"
 gem "pg_search"
 gem "faker"
+gem "geocoder"

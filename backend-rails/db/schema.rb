@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_25_165615) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_05_165206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_25_165615) do
     t.string "country", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["city"], name: "index_locations_on_city"
     t.index ["country"], name: "index_locations_on_country"
     t.index ["region"], name: "index_locations_on_region"

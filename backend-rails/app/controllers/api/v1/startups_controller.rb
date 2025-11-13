@@ -26,7 +26,7 @@ class Api::V1::StartupsController < ApplicationController
     render json: {
       data: startups.as_json(
         include: {
-          location: { only: [:city, :region, :country] },
+          location: { only: [:city, :region, :country, :latitude, :longitude] },
           application: { only: [:state, :category] },
           contact: { only: [:state, :email_status] },
           review: { only: [:rating] }
